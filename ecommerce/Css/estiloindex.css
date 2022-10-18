@@ -1,0 +1,252 @@
+:root{  
+}
+
+body{font-family: 'Montserrat', sans-serif;
+     font-size: 16px;}
+h1{font-size:48.83px;}
+h2{font-size: 39.06px;}
+h3{font-size: 31.25px;}
+h4{font-size: 25.00px;}
+h5{font-size: 20.00px;}
+h6,p{font-size: 13.00px;}
+small{font-size: 13.00px;}
+.wrap.header{padding-top: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;}
+.wrap{max-width: 90%;
+        margin: 0 auto;}
+.logo{  max-width: 128px;
+        display: inline;
+        margin-top: 0;}
+
+.enlacespago{
+        display:inline
+        }
+.imagenlogo{
+        padding-left: 8px;
+        padding-right: 8px;
+        padding-top: 8px;
+        margin-bottom: 8px;}
+.buscar{display: inline-block;}
+.barrabuscar{
+        
+        border-radius: 8px;
+        border: 0px solid;
+        background-color: rgba(63, 53, 38, 0.058);
+        padding: 16px;
+        padding-left: 128px;
+        padding-right: 128px;}
+.barrabuscar:hover {
+        font-size: 1.5em;
+      }
+.barrabuscar:focus-visible{outline: rgb(41, 43, 43) solid;
+                           outline-style: auto;}
+
+.carrito{display: inline-block;}
+form{width: 100%;}
+input{box-sizing: border-box;}
+
+.buttonenlace{position: relative;
+                padding: 16px;
+                border-color:white;
+                border-radius:8px;
+                background-color: rgba(212, 200, 29, 0.692);
+                font-weight: bold;
+                color: rgb(24, 23, 23);
+                transition: all 0.3s;}
+.buttonenlace:hover{ background-color: rgba(235, 221, 146, 0.968);}
+                
+.buttonenlace.alargado{padding: 16px;
+                        margin-top: 8px ;}
+.buttonenlace.alargado:hover{ background-color: rgba(235, 221, 146, 0.968);}
+
+.numerocarro{   
+                position:absolute;
+                color:black ;
+                top: -10px;
+                border: 0px solid ;
+                background-color:rgb(226, 245, 242) ;
+                padding: 8px;
+                border-radius: 16px;}
+a{text-decoration:none;}
+a:hover{background-color: azure;
+        border-bottom: 2px solid ;}
+
+.navmenu{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 32px;
+        padding-bottom: 32px;}
+nav{max-width: 90%;
+        margin: 0 auto;}
+.ofertas{position:relative;
+        display: inline-block;
+        background: none;
+        font-weight: bold;}
+.bt-ofertas{
+        
+position: absolute;
+bottom:-200px;
+right:-100px;
+border-style: dashed ;
+border-radius:1.5em;
+color:white;
+text-transform:uppercase;
+padding:2em 2.5em;}
+
+
+
+
+
+
+.divmenu1{display: inline-block;}
+.divmenu2{display: inline-block;}
+.menu li{display: inline-block;}
+.menu { list-style: none;
+        padding: 0;
+        margin: 0;}
+.menu a{border-radius: 8px;
+        
+        color: rgb(24, 23, 23); 
+        padding: 8px;
+        font-weight: bold;
+        margin-right: 0px;}
+
+.rating{padding: 16px;}
+.main{text-align: center;}
+.foto{background-image: url(../HTML/imagenlogo/photo-1570993492881-25240ce854f4.webp);
+        background-position: center center;
+        
+        background-size: cover;
+        max-width: 90%;
+        padding-bottom: 264px;}
+
+.card figure{max-height: 100%;}
+article.card{display:flex;
+        align-items: center;
+        align-content: space-between;
+        justify-content: space-between;
+        padding-bottom: 128px;
+        padding-top: 128px}
+.card-content{display: inline-block;
+                text-align: center;
+                padding-bottom: 64px;}    
+.card-content figure { overflow:hidden;
+                        max-height: 240px;}
+.card-content figure img{max-width: 100%;}
+
+.containerbajo{display: flex;
+                align-items: center;
+                justify-content: space-between;
+                font-weight: bold}
+                .containerbajo p{ font-weight: bold;
+                        font-size: 20.00px;}
+
+.mejoresofertas{display: inline-block;
+                padding-bottom: 64px;
+                text-align: center;
+                padding-top: 128px;}
+article .card-content{padding: 8px;}
+.figure{border: 0px solid;
+        padding: 16px;
+        max-width: 100%;}
+.figure:hover{-webkit-transform:scale(1.3);transform:scale(1.3);}
+.figure {overflow:hidden;}
+.contentproducto{border: 0px solid;
+                border-radius: 16px;
+                background-color: rgb(226, 245, 242);
+                background-image: linear-gradient( rgb(226, 245, 242), azure );
+                padding-bottom:32px;}
+.tituloarticulo{display: inline-block;
+                padding-right: 32px;
+                margin: 0px;}
+.precio{display: inline-block;}
+.divisa{display: inline-block;}
+
+.filled,.rating{font-size: 20px;
+                color: darkgray;
+                padding: 0px;
+                margin: 0px;}
+                
+.filled{color: black;}
+.testimonios{display: flex;
+        justify-content: space-between;
+        margin-bottom: 40px;}
+.testimonio{display: inline-block;
+                padding: 32px;
+                max-width: 45%;}
+.testimonio div{margin-top: 32px;}
+.testimonio1{display: inline-block;
+                padding: 32px;
+                max-width: 45%;
+                border: 4px solid;
+                border-radius: 16px;
+                border-color:  cadetblue;
+                text-align: center;}
+.testimonio1 p{font-size: 20.00px;}
+.testimonio p{font-size: 20.00px;}
+.opiniones{
+        padding: 16px;
+        border-color:white;
+        border-radius:8px;
+        background-color: rgba(212, 200, 29, 0.692);
+        font-weight: bold;
+        color: rgb(24, 23, 23);
+        transition: all 0.3s;}
+.opiniones:hover{ background-color: rgba(235, 221, 146, 0.968);}
+
+.pagoseguro{display: inline-block;
+                padding: 0px;
+                margin: 0px;}
+
+.enviogratis {display: inline-block;
+        padding: 0px;
+        margin: 0px;}
+.garantia{display: inline-block;
+        padding: 0px;
+                margin: 0px;}
+.ofertas{display: inline-block;
+        padding: 0px;
+                margin: 0px;}
+
+.footer{
+        border-radius: 8px;
+        color: rgb(24, 23, 23); 
+        padding-top: 32px;
+        font-weight: bold;
+        margin-right: 0px;
+        display: flex;
+        align-items: center;
+        }
+.footer.wrap{max-width: 90%;
+        margin: 0 auto;
+        background-color: rgb(226, 245, 242);
+        background-image: linear-gradient( rgb(226, 245, 242), azure );}
+
+.divsuscribir{display: inline-block;
+                padding: 32px;}
+.menufooter{display: inline-block;
+                padding: 16px;
+                margin: 0;
+                text-decoration: none;}
+.menufooter li{padding: 8px;
+        list-style: none;}
+.barrabuscaremail{border-radius: 8px;
+        border: 0px solid;
+        background-color: rgb(254, 255, 255);
+        padding: 8px;
+        padding-left: 80px;
+        padding-right: 80px;
+        margin-bottom: 16px;}
+
+.barrabuscaremail:focus-visible{outline: cadetblue solid;
+                outline-style: auto;}
+.redes{text-align: center;
+        padding-top: 8px;
+        border-top: 2px solid rgb(48, 48, 144);
+        margin: 0px;}
+.redes h4{margin: 0px;
+        padding: 8px;}
+

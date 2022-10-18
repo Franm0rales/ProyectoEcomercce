@@ -1,0 +1,48 @@
+.formularios{display: flex;
+            padding-bottom: 32px;
+            align-items: center;
+            justify-content: space-between;}
+.form2{max-width:100%;
+    width: 800px;
+    border-radius:16px;
+    box-shadow:0 0 40px -10px  rgb(43, 44, 44);
+    padding:20px 30px;
+    box-sizing:border-box;
+    display: inline-block;
+    margin-top: 32px;}
+.form1{max-width:100%;
+        width: 800px;
+        border-radius:16px;
+        text-decoration: solid ;
+        padding:20px 30px;
+        box-sizing:border-box;
+        display: inline-block;}
+.form2{
+            background-color: white;
+            -webkit-transition: background-color 1s linear;
+            transition: background-color 1s linear;
+          }
+.form2:hover{background-color: cadetblue;}
+p{ font-weight: bold;
+    font-size: 20.00px;}
+
+p:before{content:attr(type);
+        display:block;
+        margin:28px 0 0;}
+
+.inputform{width:80%;
+    padding:24px;
+    box-sizing:border-box;
+    border:none;
+    border-radius: 16px;
+    margin-bottom: 32px;
+    background-color: rgb(226, 245, 242);}
+    .nombre{display: inline-block;
+        width: 35%;}
+    .apellidos{ display: inline-block;
+                        width: 55%;}
+.inputform:focus-visible{outline: cadetblue solid;
+        outline-style: auto;}
+    
+a{text-align: center;
+margin-top: 0;}
