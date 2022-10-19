@@ -188,7 +188,8 @@
         border-bottom-right-radius:30px;
         position:relative;
       }
-.testimonios{align-items: center;}
+.testimonios{align-items: center;
+  justify-content: center;}
 .testimonio1:hover {
   font-size: 1.5em;
 }
