@@ -2,3 +2,26 @@
     display: flex;
     align-items: center;
     justify-content: space-between;}
+.formasdepago{
+              display: flex;
+              align-items: center;
+              justify-content: space-between;}
+.testimonios{
+    display: flex;
+    max-width: 100%;
+    padding-top: 128px;
+    justify-content: center;
+    margin-bottom: 128px;
+    align-items: center;
+}
+
+.testimonio1{
+    padding: 64px;
+    max-width: 45%;
+}
+.testimonio2{
+    
+        padding: 64px;
+        max-width: 45%;
+    
+}
