@@ -162,8 +162,8 @@ article.card{display:flex;
         align-items: center;
         align-content: space-between;
         justify-content: space-between;
-        padding-bottom: 128px;
-        padding-top: 128px}
+        padding-bottom: 16px;
+        padding-top: 16px}
 .card-content{display: inline-block;
                 text-align: center;
                 padding-bottom: 64px;}    

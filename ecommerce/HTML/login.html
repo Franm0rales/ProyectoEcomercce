@@ -49,7 +49,7 @@
 <div class="divmenu2">
       <ul class="menu">
         <li><a href="mispedidos.html" > Mis pedidos</a></li>
-        <li><a href="login.html" > Login </a></li>
+        <li><a  href="login.html" > Login </a></li>
         <li><a href="logout.html" > Logout</a></li>
       </ul>
     </div>
@@ -58,9 +58,11 @@
    <div class="formularios wrap">
     <form class="form1">
       <h2>Iniciar sesión</h2>
-      <p type="Email"><input class= "inputform" placeholder="Email"></input></p>
-      <p type="Contraseña"><input class="inputform" placeholder="Contraseña"></input></p>
-      <a class="buttonenlace" href="" ><span>Iniciar sesión </span></a>
+      <p type="Email"><input id="email" class= "inputform" placeholder="Email"></input></p>
+      <div id="emailError"></div>
+      <p type="Contraseña"><input id= "password" class="inputform" placeholder="Contraseña"></input></p>
+      <div id="passwordError"></div>
+      <a class="buttonenlace" onclick="iniciarSesion()" ><span>Iniciar sesión </span></a>
   
     </form>
     
@@ -193,5 +195,6 @@
     </div>
 
     </footer>
+    <script src="../javascript/main.js"></script>
   </body>
 </html>

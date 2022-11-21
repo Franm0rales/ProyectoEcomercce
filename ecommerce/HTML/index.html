@@ -11,12 +11,12 @@
     <link rel="stylesheet" href="../Css/estiloindex.css">
     <link rel="shortcur icon" href="../HTML/imagenlogo/logo.png" type="image/x-icon">
   </head>
-  <body>
+  <body onload="productos()">
    
     <header >
       <div class="wrap header">
     
-      <div class="logo">
+      <div class="logo" id="logo">
       <a  href="index.html">
       <img class="imagenlogo" src="imagenlogo/logo.png" width="100px" alt="logo"></a>
       </div>
@@ -29,7 +29,7 @@
       <div class="carrito">
       <a class="buttonenlace" href="añadiralcarrito.html">
       
-      <span> 🛒 Carrito</span> <span class="numerocarro" ><span>3</span></a></div>
+      <span> 🛒 Carrito</span> <span class="numerocarro"  id="carritoSumar">0</span></a></div>
     </div>
     </header>
     <nav class="navmenu ">
@@ -74,7 +74,8 @@
           
           </section>
         </main>
-<article class=" wrap card">
+        
+<article id="productos" class=" wrap card">
   <div class="figure">
   <div class="card-content">
     <figure>
@@ -99,7 +100,7 @@
         <h6>Consigue ahora los mejores productos de Computer Low Cost </h6>
 
         <div class="carrito">
-          <a class="buttonenlace" href="añadiralcarrito.html">
+          <a onclick="agregarCarrito()" class ="buttonenlace">
           
           <span> 🛒 Carrito</span></a></div>
         <a href="todoslosproductos.html" class="buttonenlace">Ver</a>
@@ -131,7 +132,7 @@
         <h6>Consigue ahora los mejores productos de Computer Low Cost </h6>
 
         <div class="carrito">
-          <a class="buttonenlace" href="añadiralcarrito.html">
+          <a class="buttonenlace"  href="añadiralcarrito.html">
           
           <span> 🛒 Carrito</span></a></div>
         <a href="todoslosproductos.html" class="buttonenlace">Ver</a>
@@ -348,5 +349,6 @@
     </div>
 
     </footer>
+    <script src="../javascript/main.js"></script>
   </body>
 </html>
