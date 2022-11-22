@@ -29,7 +29,7 @@ function productos() {
         <div class="figure">
         <div class="card-content">
           <figure>
-              <img src="../imagenlogo/ms2.jpg" alt="Portatil" width="200px" height="150px" >
+              <img src="${response[i].picture}" alt="Portatil" width="200px" height="150px" >
           </figure></div>
       
           <div class="figurecard">
@@ -66,7 +66,6 @@ function productos() {
 }
 function ofertas() {
   let userId = new URLSearchParams(window.location.search).get("id");
-  console.log(userId);
   const request = new XMLHttpRequest();
   request.onreadystatechange = function () {
     console.log(`Estado actual ${this.readyState}`);
@@ -81,7 +80,7 @@ function ofertas() {
         <div class="figure">
         <div class="card-content">
           <figure>
-              <img src="../imagenlogo/ms2.jpg" alt="Portatil" width="200px" height="150px" >
+              <img src="${response[i].picture}" alt="Portatil" width="200px" height="150px" >
           </figure></div>
       
           <div class="figurecard">

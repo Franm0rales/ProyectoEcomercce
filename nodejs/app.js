@@ -7,21 +7,25 @@ app.get("/", function (request, response) {
 });
 app.get("/ProductosDestacados", function (request, response) {
   const productoUno = {
+    picture:"/ecommerce/imagenlogo/acer.jpg",
     nombre: "Portatil Acer",
     stock: 100,
     precio: 1499.99,
   };
   const productoDos = {
     nombre: "Portatil Msi",
+    picture:"/ecommerce/imagenlogo/msi1.jpg",
     stock: 100,
     precio: 1499.99,
   };
   const productoTres = {
     nombre: "Portatil Msi",
+    picture:"/ecommerce/imagenlogo/msi1.jpg",
     stock: 100,
     precio: 1499.99,
   };
   const productoCuatro = {
+    picture:"/ecommerce/imagenlogo/acer.jpg",
     nombre: "Portatil Acer",
     stock: 100,
     precio: 1499.99,
@@ -32,6 +36,7 @@ app.get("/ProductosDestacados", function (request, response) {
 app.get("/ofertas", function (request, response){
   const ofertaUno = {
     nombre: "Portatil Acer",
+    picture:"/ecommerce/imagenlogo/acer.jpg",
     stock: 100,
     precio: 1499.99,
     descripcion:"Acelere a fondo con la computadora portátil para juegos Acer Nitro 5 AMD Ryzen™ Serie 6000 en modelos de 15 o 17 pulgadas,ya sea que la use como computadora portátil para juegos casuales o para subir de nivel en línea.",
@@ -41,6 +46,7 @@ app.get("/ofertas", function (request, response){
   };
   const ofertaDos = {
     nombre: "Portatil Msi",
+    picture:"/ecommerce/imagenlogo/msi1.jpg",
     stock: 100,
     precio: 1499.99,
     descripcion:"Acelere a fondo con la computadora portátil para juegos Acer Nitro 5 AMD Ryzen™ Serie 6000 en modelos de 15 o 17 pulgadas,ya sea que la use como computadora portátil para juegos casuales o para subir de nivel en línea.",
@@ -50,6 +56,7 @@ app.get("/ofertas", function (request, response){
   };
   const ofertaTres = {
     nombre: "Portatil Msi",
+    picture:"/ecommerce/imagenlogo/msi1.jpg",
     stock: 100,
     precio: 1499.99,
     descripcion:"Acelere a fondo con la computadora portátil para juegos Acer Nitro 5 AMD Ryzen™ Serie 6000 en modelos de 15 o 17 pulgadas,ya sea que la use como computadora portátil para juegos casuales o para subir de nivel en línea.",
@@ -59,6 +66,7 @@ app.get("/ofertas", function (request, response){
   };
   const ofertaCuatro = {
     nombre: "Portatil Acer",
+    picture:"/ecommerce/imagenlogo/acer.jpg",
     stock: 100,
     precio: 1499.99,
     descripcion:"Acelere a fondo con la computadora portátil para juegos Acer Nitro 5 AMD Ryzen™ Serie 6000 en modelos de 15 o 17 pulgadas,ya sea que la use como computadora portátil para juegos casuales o para subir de nivel en línea.",
