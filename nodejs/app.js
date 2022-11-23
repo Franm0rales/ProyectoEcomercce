@@ -46,7 +46,17 @@ const productoCuatro = {
     "Procesador AMD Ryzen™ 7 6800H 3.2 GHz Memoria 16 GB DDR5 Memory Controlador gráfico NVIDIA® GeForce RTX™ 3050 4G-GDDR6(2C*256*16*4) Almacenamiento 512GB PCIe NVMe SED SSD Unidad óptica NO Display 15.6 FHD IPS 144Hz SlimBezel 16:9 Controlador gráfico NVIDIA® GeForce RTX™ 3050 4G-GDDR6(2C*256*16*4)",
 };
 let productos = [productoUno, productoDos, productoTres, productoCuatro];
+const usuarioUno = {
+  email: "picassomorales@gmail.com",
+  password: "1234",
+};
+const usuarioDos = {
+  email: "picasso@gmail.com",
+  password: "1234",
+};
+const usuarios = [usuarioUno, usuarioDos];
 app.use(cors());
+app.use(express.json());
 
 app.get("/", function (request, response) {
   response.send("Bienvenido a mi ecommerce");
@@ -61,6 +71,17 @@ app.get("/detalles/:id", function (request, response) {
       response.send(i);
     }
   }
+});
+app.post("/login", function (request, response) {
+  const email = request.body.email;
+  const password = request.body.email;
+  console.log(email, password);
+  for (const usario of usuarios) {
+    if (email === usuario.email && password === usuario.password) {
+      response.status(200).send();
+    }
+  }
+  response.status(401).send();
 });
 
 app.listen(8000, function () {
