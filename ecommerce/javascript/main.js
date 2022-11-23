@@ -78,7 +78,7 @@ function ofertas() {
         <div class="figure">
         <div class="card-content">
           <figure>
-              <img src="${response.picture}" alt="Portatil" width="200px" height="150px" >
+              <img src="${response.picture}" alt="Portatil" width="300px" height="250px" >
           </figure></div>
       
           <div class="figurecard">
@@ -96,8 +96,8 @@ function ofertas() {
                   <span>★</span>
                   <span>★</span>
                 </div>
-              <h6>${response.descripcion}</h6>
-              <h6>${response.Especificaciones}</h6>
+              <h4>${response.descripcion}</h4>
+              <h4>${response.Especificaciones}</h4>
       
               <div class="carrito">
                 <a onclick="agregarCarrito()" class ="buttonenlace">
