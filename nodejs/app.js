@@ -1,6 +1,10 @@
 let express = require("express");
 let cors = require("cors");
+let mysql = require("mysql");
 let app = express();
+/**
+ * Constantes
+ */
 const productoUno = {
   id: 1,
   picture: "/imagenlogo/acer.jpg",
@@ -55,15 +59,53 @@ const usuarioDos = {
   password: "1234",
 };
 const usuarios = [usuarioUno, usuarioDos];
+/**
+ * mysql
+ */
+let connection = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "root",
+  database: "ecommerce",
+});
+app.get("/ProductosDestacados", function (request, response) {
+  connection.connect(function (error) {
+    if (error) {
+      console.log(`No es posible conectarse al servidor:${error}`);
+      return;
+    }
+    console.log("Conectado  a MySQL");
+  });
+  connection.query(
+    "select * from usuario",
+    [],
+    function (error, results, fields) {
+      if (error) {
+        console.log(`Se ha producido un error al ejecutar la query: ${error}`);
+        return;
+      }
+
+      response.send(results);
+    }
+  );
+  connection.end(function (error) {
+    if (error) {
+      console.log(`No se ha podido cerrar la conexion:${error}`);
+      return;
+    }
+    console.log("Conexion cerrada a MySQL");
+  });
+});
+/**
+ * Servicio API
+ */
 app.use(cors());
 app.use(express.json());
 
 app.get("/", function (request, response) {
   response.send("Bienvenido a mi ecommerce");
 });
-app.get("/ProductosDestacados", function (request, response) {
-  response.send(productos);
-});
+
 app.get("/detalles/:id", function (request, response) {
   const productoId = request.params.id;
   for (i of productos) {
@@ -74,9 +116,9 @@ app.get("/detalles/:id", function (request, response) {
 });
 app.post("/login", function (request, response) {
   const email = request.body.email;
-  const password = request.body.email;
+  const password = request.body.password;
   console.log(email, password);
-  for (const usario of usuarios) {
+  for (let usuario of usuarios) {
     if (email === usuario.email && password === usuario.password) {
       response.status(200).send();
     }
