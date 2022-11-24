@@ -4,18 +4,24 @@ function agregarCarrito() {
   carritoSumar.innerHTML = `${++cantidad}`;
 }
 function iniciarSesion() {
-  const usuario = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-  let emailError = document.getElementById("emailError");
-  let errorPassword = document.getElementById("errorPassword");
-  if (usuario == "picassomorales@gmail.com" && password == "12345678") {
-    emailError.innerHTML = "<span>bienvenido</span>";
-    errorPassword.innerHTML = "<span>Bienvenido</span>";
-  } else {
-    emailError.innerHTML = "<span>Error!!</span>";
-    errorPassword.innerHTML = "<span>Error!!</span>";
-  }
+  const request = new XMLHttpRequest();
+  let email = document.getElementById("email").value;
+  let password = document.getElementById("password").value;
+  request.onreadystatechange = function () {
+    console.log(`Estado actual ${this.readyState}`);
+    let userDiv = document.getElementById("login");
+    let htmlContent = `<div><a class="buttonenlace" ><span>Iniciar sesión </span></a>Error!!</div>`;
+    if (this.readyState == 4 && this.status == 200) {
+      htmlContent = `<div><a href= "login.hmtl" class="buttonenlace" ><span>Iniciar sesión </span></a></div> `;
+      window.location.href = "/HTML/index.html";
+    }
+    userDiv.innerHTML = htmlContent;
+  };
+  request.open("POST", `http://localhost:8000/login`, true);
+  request.setRequestHeader("Content-type", "application/json");
+  request.send(JSON.stringify({ email: email, password: password }));
 }
+
 function productos() {
   const request = new XMLHttpRequest();
   request.onreadystatechange = function () {
