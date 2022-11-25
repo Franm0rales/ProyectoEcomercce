@@ -98,23 +98,39 @@ app.get("/ProductosDestacados", function (request, response) {
     console.log("Conexion cerrada a MySQL");
   });
 });
+app.get("/detalles/:id", function (request, response) {
+
+  const productoId = request.params.id;
+  connection.connect(function (error) {
+    if (error) {
+      console.log(`No es posible conectarse al servidor:${error}`);
+      return;
+    }
+    console.log("Conectado  a MySQL");
+  });
+  connection.query(
+    "select * from productos where id=?",
+    [productoId],
+    function (error, results, fields) {
+      console.log(results);
+      
+      if (error) {
+        console.log(`Se ha producido un error al ejecutar la query: ${error}`);
+        return;
+      }
+      
+      response.send(results);
+    }
+  );
+});
 /**
  * Servicio API
  */
-
-
 app.get("/", function (request, response) {
   response.send("Bienvenido a mi ecommerce");
 });
 
-app.get("/detalles/:id", function (request, response) {
-  const productoId = request.params.id;
-  for (i of productos) {
-    if (i.id == productoId) {
-      response.send(i);
-    }
-  }
-});
+
 app.post("/login", function (request, response) {
   const email = request.body.email;
   const password = request.body.password;
