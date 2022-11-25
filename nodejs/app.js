@@ -90,16 +90,8 @@ app.get("/ProductosDestacados", function (request, response) {
       response.send(results);
     }
   );
-  connection.end(function (error) {
-    if (error) {
-      console.log(`No se ha podido cerrar la conexion:${error}`);
-      return;
-    }
-    console.log("Conexion cerrada a MySQL");
-  });
 });
 app.get("/detalles/:id", function (request, response) {
-
   const productoId = request.params.id;
   connection.connect(function (error) {
     if (error) {
@@ -113,12 +105,12 @@ app.get("/detalles/:id", function (request, response) {
     [productoId],
     function (error, results, fields) {
       console.log(results);
-      
+
       if (error) {
         console.log(`Se ha producido un error al ejecutar la query: ${error}`);
         return;
       }
-      
+
       response.send(results);
     }
   );
@@ -130,19 +122,68 @@ app.get("/", function (request, response) {
   response.send("Bienvenido a mi ecommerce");
 });
 
-
 app.post("/login", function (request, response) {
-  const email = request.body.email;
+  const Email = request.body.Email;
   const password = request.body.password;
-  console.log(email, password);
-  for (let usuario of usuarios) {
-    if (email === usuario.email && password === usuario.password) {
-      response.status(200).send();
+  console.log(Email, password);
+  connection.connect(function (error) {
+    if (error) {
+      console.log(`No es posible conectarse al servidor:${error}`);
+      return;
     }
-  }
-  response.status(401).send();
+    console.log("Conectado  a MySQL");
+  });
+  connection.query(
+    "select * from usuario where Email=? and password=?",
+    [Email, password],
+    function (error, results, fields) {
+      console.log(results);
+      if (error) {
+        console.log(`Se ha producido un error al ejecutar la query: ${error}`);
+        return;
+      }
+      if (results.length > 0) {
+        response.status(200).send();
+      } else {
+        response.status(401).send();
+      }
+    }
+  );
+  connection.end(function (error) {
+    if (error) {
+      console.log(`No se ha podido cerrar la conexion:${error}`);
+      return;
+    }
+    console.log("Conexion cerrada a MySQL");
+  });
 });
-
+app.post("/registro", function (request, response) {
+  const Nombre = request.body.Nombre;
+  const Apellidos = request.body.Apellidos;
+  const telefono = request.body.telefono;
+  const Email = request.body.Email;
+  const password = request.body.password;
+  console.log(Email, password, Nombre, Apellidos);
+  connection.connect(function (error) {
+    if (error) {
+      console.log(`No es posible conectarse al servidor:${error}`);
+      return;
+    }
+    console.log("Conectado  a MySQL");
+  });
+  connection.query(
+    "insert into usuario (Email,password,telefono,Nombre,Apellidos)values(?,?,?,?,?)",
+    [Email, password, "", Nombre, Apellidos],
+    function (error, results, fields) {
+      console.log(results);
+      if (error) {
+        console.log(`Se ha producido un error al ejecutar la query: ${error}`);
+        response.status(400).send();
+      }
+      response.send(results);
+    }
+  );
+});
 app.listen(8000, function () {
   console.log("API lista para recibir llamadas");
 });
