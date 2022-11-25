@@ -53,7 +53,7 @@ function productos() {
                 <a onclick="agregarCarrito()" class ="buttonenlace">
                 
                 <span> 🛒 Carrito</span></a></div>
-              <a onclick="ofertas()" id="ofertas" href="todoslosproductos.html?id=${response[i].nombre}" class="buttonenlace">Ver</a>
+              <a onclick="ofertas()"  href="todoslosproductos.html?id=${response[i].nombre}" class="buttonenlace">Ver</a>
           </div>
           </div>
         </div>`;
@@ -80,7 +80,7 @@ function ofertas() {
         <div class="figure">
         <div class="card-content">
           <figure>
-              <img src="${response[i].picture}" alt="Portatil" width="200px" height="150px" >
+              <img src="${response[i].picture}" alt="Portatil" width="270px" height="200px" >
           </figure></div>
       
           <div class="figurecard">
