@@ -2,6 +2,8 @@ let express = require("express");
 let cors = require("cors");
 let mysql = require("mysql");
 let app = express();
+app.use(cors());
+app.use(express.json());
 /**
  * Constantes
  */
@@ -77,7 +79,7 @@ app.get("/ProductosDestacados", function (request, response) {
     console.log("Conectado  a MySQL");
   });
   connection.query(
-    "select * from usuario",
+    "select * from productos",
     [],
     function (error, results, fields) {
       if (error) {
@@ -99,8 +101,7 @@ app.get("/ProductosDestacados", function (request, response) {
 /**
  * Servicio API
  */
-app.use(cors());
-app.use(express.json());
+
 
 app.get("/", function (request, response) {
   response.send("Bienvenido a mi ecommerce");
