@@ -11,15 +11,17 @@ function iniciarSesion() {
     console.log(`Estado actual ${this.readyState}`);
     let userDiv = document.getElementById("login");
     let htmlContent = `<div><a class="buttonenlace" ><span>Iniciar sesión </span></a>Error!!</div>`;
+
     if (this.readyState == 4 && this.status == 200) {
       htmlContent = `<div><a href= "login.hmtl" class="buttonenlace" ><span>Iniciar sesión </span></a></div> `;
       window.location.href = "/HTML/index.html";
     }
     userDiv.innerHTML = htmlContent;
   };
+  document.getElementById("email").value = "";
   request.open("POST", `http://localhost:8000/login`, true);
   request.setRequestHeader("Content-type", "application/json");
-  request.send(JSON.stringify({ email: email, password: password }));
+  request.send(JSON.stringify({ Email: email, password: password }));
 }
 
 function productos() {
@@ -113,11 +115,39 @@ function ofertas() {
           </div>
           </div>
         </div>`;
-      
+
       userDiv.innerHTML = htmlContent;
     }
   };
 
   request.open("GET", `http://localhost:8000/detalles/${userId}`, true);
-  request.send()
+  request.send();
+}
+function registroSesion() {
+  const request = new XMLHttpRequest();
+  let email = document.getElementById("emailregistro").value;
+  let password = document.getElementById("passwordregistro").value;
+  let nombre = document.getElementById("nombre").value;
+  let apellidos = document.getElementById("apellidos").value;
+  request.onreadystatechange = function () {
+    console.log(`Estado actual ${this.readyState}`);
+    let userDiv = document.getElementById("login");
+    let htmlContent = `<a class="buttonenlace form1" ><span>Crear cuenta ahora</span></a>`;
+    if (this.readyState == 4 && this.status == 200) {
+      htmlContent = `<a  class="buttonenlace form1"  ><span>Crear cuenta ahora</span></a>`;
+      window.location.href = "/HTML/index.html";
+    }
+    userDiv.innerHTML = htmlContent;
+  };
+
+  request.open("POST", `http://localhost:8000/registro`, true);
+  request.setRequestHeader("Content-type", "application/json");
+  request.send(
+    JSON.stringify({
+      Email: email,
+      password: password,
+      Nombre: nombre,
+      Apellidos: apellidos,
+    })
+  );
 }
