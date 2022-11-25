@@ -59,7 +59,7 @@ function productos() {
                 <a onclick="agregarCarrito()" class ="buttonenlace">
                 
                 <span> 🛒 Carrito</span></a></div>
-              <a onclick="ofertas()" id="ofertas" href="todoslosproductos.html?id=${response[i].nombre}" class="buttonenlace">Ver</a>
+              <a onclick="ofertas()" id="ofertas" href="todoslosproductos.html?id=${response[i].id}" class="buttonenlace">Ver</a>
           </div>
           </div>
         </div>`;
@@ -84,15 +84,15 @@ function ofertas() {
         <div class="figure">
         <div class="card-content">
           <figure>
-              <img src="${response[i].picture}" alt="Portatil" width="200px" height="150px" >
+              <img src="${response[0].picture}" alt="Portatil" width="200px" height="150px" >
           </figure></div>
       
           <div class="figurecard">
         <div class="contentproducto">
             <div class="tituloarticulo">
-              <h4>${response.nombre}</h4></div>
+              <h4>${response[0].nombre}</h4></div>
               <div class="precio">
-                <span><b>${response.precio}</b></span></div>
+                <span><b>${response[0].precio}</b></span></div>
                 <div class="divisa">
                 <span>€</span></div>
                 <div class="rating">
@@ -102,8 +102,8 @@ function ofertas() {
                   <span>★</span>
                   <span>★</span>
                 </div>
-              <h4>${response.descripcion}</h4>
-              <h4>${response.Especificaciones}</h4>
+              <h4>${response[0].descripcion}</h4>
+              <h4>${response[0].Especificaciones}</h4>
       
               <div class="carrito">
                 <a onclick="agregarCarrito()" class ="buttonenlace">
@@ -113,10 +113,11 @@ function ofertas() {
           </div>
           </div>
         </div>`;
+      
       userDiv.innerHTML = htmlContent;
     }
   };
 
   request.open("GET", `http://localhost:8000/detalles/${userId}`, true);
-  request.send();
+  request.send()
 }
