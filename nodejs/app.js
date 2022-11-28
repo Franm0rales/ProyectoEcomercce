@@ -252,7 +252,7 @@ app.get("/pedido/:usuario", function (request, response) {
       );
 
       connection.query(
-        "select producto,sum(cantidad)as cantidad,precio,usuario from carritodetalle",
+        "select producto,sum(cantidad)as cantidad,precio,usuario from carritodetalle group by id",
         [],
         function (error, results, fields) {
           if (error) {
@@ -261,8 +261,7 @@ app.get("/pedido/:usuario", function (request, response) {
             );
             return;
           }
-
-          connection.query(
+          let idCarrito = connection.query(
             `insert into detallepedido(usuario,producto,cantidad,precio,pedido)
         values(${results[0].usuario},${results[0].producto},${results[0].cantidad},${results[0].precio},(SELECT
           pedidos.id 
