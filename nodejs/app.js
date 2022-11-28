@@ -115,12 +115,6 @@ app.get("/detalles/:id", function (request, response) {
     }
   );
 });
-/**
- * Servicio API
- */
-app.get("/", function (request, response) {
-  response.send("Bienvenido a mi ecommerce");
-});
 
 app.post("/login", function (request, response) {
   const Email = request.body.Email;
@@ -184,6 +178,103 @@ app.post("/registro", function (request, response) {
     }
   );
 });
+app.get("/productosCarrito/:id", function (request, response) {
+  const productoId = request.params.id;
+  console.log(productoId);
+  connection.connect(function (error) {
+    if (error) {
+      console.log(`No es posible conectarse al servidor:${error}`);
+      return;
+    }
+    console.log("Conectado  a MySQL");
+  });
+  connection.query(
+   
+    "SELECT id,precio,nombre FROM productos where id=?",
+    [productoId], 
+    function (error, results, fields) {
+      
+      if (error) {
+        console.log(`Se ha producido un error al ejecutar la query: ${error}`);
+        return;
+        
+      }
+      connection.query(
+        `insert into carritodetalle(producto,precio,cantidad,nombre,usuario)
+        values(${results[0].id},${results[0].precio},${1},"${results[0].nombre}",${1})`,
+      )
+      response.send(results);
+    
+    }
+  );
+});
+app.get("/carrito/:usuario", function (request, response) {
+  const usuarioId = request.params.usuario;
+  connection.connect(function (error) {
+    if (error) {
+      console.log(`No es posible conectarse al servidor:${error}`);
+      return;
+    }
+    console.log("Conectado  a MySQL");
+  });
+  connection.query(
+   
+    "SELECT * FROM carritodetalle where usuario=? ",
+    [usuarioId], 
+    function (error, results, fields) {
+      
+      if (error) {
+        console.log(`Se ha producido un error al ejecutar la query: ${error}`);
+        return;
+        
+      }
+
+      response.send(results);
+    
+    }
+  );
+});
+app.get("/pedido/:usuario", function (request, response) {
+  const productoId = request.params.id;
+  console.log(productoId);
+  connection.connect(function (error) {
+    if (error) {
+      console.log(`No es posible conectarse al servidor:${error}`);
+      return;
+    }
+    console.log("Conectado  a MySQL");
+  });
+  connection.query(
+   
+    "SELECT usuario,sum(precio)as total FROM ecommerce.carritodetalle",
+    [], 
+    function (error, results, fields) {
+      
+      if (error) {
+        console.log(`Se ha producido un error al ejecutar la query: ${error}`);
+        return;
+        
+      }
+      connection.query(
+        `insert into pedido(usuario,total)
+        values(${results[0].usuario},${results[0].total})`,
+      )
+      connection.query(
+        "DELETE FROM carritodetalle WHERE usuario=1",
+        [],
+      )
+      response.send(results);
+    
+    }
+  );
+});
+/**
+ * Servicio API
+ */
+ app.get("/", function (request, response) {
+  response.send("Bienvenido a mi ecommerce");
+});
 app.listen(8000, function () {
   console.log("API lista para recibir llamadas");
 });
+
