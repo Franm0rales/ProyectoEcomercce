@@ -189,22 +189,20 @@ app.get("/productosCarrito/:id", function (request, response) {
     console.log("Conectado  a MySQL");
   });
   connection.query(
-   
     "SELECT id,precio,nombre FROM productos where id=?",
-    [productoId], 
+    [productoId],
     function (error, results, fields) {
-      
       if (error) {
         console.log(`Se ha producido un error al ejecutar la query: ${error}`);
         return;
-        
       }
       connection.query(
         `insert into carritodetalle(producto,precio,cantidad,nombre,usuario)
-        values(${results[0].id},${results[0].precio},${1},"${results[0].nombre}",${1})`,
-      )
+        values(${results[0].id},${results[0].precio},${1},"${
+          results[0].nombre
+        }",${1})`
+      );
       response.send(results);
-    
     }
   );
 });
@@ -218,19 +216,15 @@ app.get("/carrito/:usuario", function (request, response) {
     console.log("Conectado  a MySQL");
   });
   connection.query(
-   
     "SELECT * FROM carritodetalle where usuario=? ",
-    [usuarioId], 
+    [usuarioId],
     function (error, results, fields) {
-      
       if (error) {
         console.log(`Se ha producido un error al ejecutar la query: ${error}`);
         return;
-        
       }
 
       response.send(results);
-    
     }
   );
 });
@@ -245,36 +239,49 @@ app.get("/pedido/:usuario", function (request, response) {
     console.log("Conectado  a MySQL");
   });
   connection.query(
-   
     "SELECT usuario,sum(precio)as total FROM ecommerce.carritodetalle",
-    [], 
+    [],
     function (error, results, fields) {
-      
       if (error) {
         console.log(`Se ha producido un error al ejecutar la query: ${error}`);
         return;
-        
       }
       connection.query(
-        `insert into pedido(usuario,total)
-        values(${results[0].usuario},${results[0].total})`,
-      )
+        `insert into pedidos(usuario,total)
+        values(${results[0].usuario},${results[0].total})`
+      );
+
       connection.query(
-        "DELETE FROM carritodetalle WHERE usuario=1",
+        "select producto,sum(cantidad)as cantidad,precio,usuario from carritodetalle",
         [],
-      )
-      response.send(results);
-    
+        function (error, results, fields) {
+          if (error) {
+            console.log(
+              `Se ha producido un error al ejecutar la query: ${error}`
+            );
+            return;
+          }
+
+          connection.query(
+            `insert into detallepedido(usuario,producto,cantidad,precio,pedido)
+        values(${results[0].usuario},${results[0].producto},${results[0].cantidad},${results[0].precio},(SELECT
+          pedidos.id 
+      FROM pedidos
+      where pedidos.usuario=1 group by id Desc limit 1 ))`
+          );
+          connection.query("DELETE FROM carritodetalle WHERE usuario=1", []);
+          response.send(results);
+        }
+      );
     }
   );
 });
 /**
  * Servicio API
  */
- app.get("/", function (request, response) {
+app.get("/", function (request, response) {
   response.send("Bienvenido a mi ecommerce");
 });
 app.listen(8000, function () {
   console.log("API lista para recibir llamadas");
 });
-
