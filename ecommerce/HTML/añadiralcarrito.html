@@ -12,11 +12,11 @@
     <link rel="stylesheet" href="../Css/carrito.css">
   </head>
 </head>
-<body>
+<body onload="carrito()">
     <header class="wrap header">
       <div class="logo">
         <a  href="index.html">
-        <img class="imagenlogo" src="imagenlogo/logo.png" width="100px" alt="logo"></a></div>
+        <img class="imagenlogo" src="/imagenlogo/logo.png" width="100px" alt="logo"></a></div>
         
         <div class="enlacespago">
           <a class="buttonenlace" href="añadiralcarrito.html">
@@ -26,93 +26,31 @@
           <span> 💳Forma de Pago</span></a>
           
           <span>➡️</span>
-          <a class="buttonenlace" href="">
+          <a class="buttonenlace" onclick="pedido()" href="Finalizarcompra.html">
             <span> 📋Finalizar pedido</span></a>
           </div>
        
       </header>
-      <section class="wrap testimonios">
-      <div class='testimonio'>
-        
+      <section class="wrap-testimonios">
+      <div class='testimoniocarrito'>
             <div class='order-info-content'>
-              <h2>Resumen Pedido</h2>
-                      <div class='line'></div>
-              <table class='order-table'>
-                <tbody>
-                  
-                    <td><img src='../imagenlogo/msi1.jpg' class='full-width'></img>
-                    </td>
-                    <td>
-                      <br> <span class='thin'>MSI</span>
-                      <br> Portatil Msi<br> <span class='thin small'> Color: Grey</span>
-                    </td>
-      
-                  
-                    <td>
-                      <div class='price'>999.95 €</div>
-                    </td>
-                 
-                </tbody>
-      
-              </table>
-              <div class='line'></div>
-              <table class='order-table'>
-                <tbody>
-                  <tr>
-                    <td><img src='../imagenlogo/acer.jpg' class='full-width'></img>
-                    </td>
-                    <td>
-                      <br> <span class='thin'>ACER</span>
-                      <br>Portatil Acer<br> <span class='thin small'> Color: black</span>
-                    </td>
-                  
-                  
-                    <td>
-                      <div class='price'>999.95 €</div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <div class='line'></div>
-              <table class='order-table'>
-                <div>
-                  
-                    <td><img src='../imagenlogo/ms2.jpg' class='full-width'></img>
-                    </td>
-                    <td>
-                      <br> <span class='thin'>MSI</span>
-                      <br>Portatil Msi<br> <span class='thin small'> Color: Grey</span>
-                    </td>
-      
-                  
-                    <td>
-                      <div class='price'>999.95 €</div>
-                    </td>
-                  
-                </div>
-              </table>
-              <div class='line'></div>
-              
+                      <div id="carrito" class='line'>
               </div>
       </div>
-      </div>
-             
-                
-                  <div class='testimonio1'>
-                    
-                    
+    </div>
+                  <div class='testimoniocarrito'>
                       <h3>Resumen del Pedido</h3>
                       <h5>Proceder al pago</h5>
-                      <span class="pricetotal"> TOTAL: 2999.85 €</span>
+                      <span id="total" class="pricetotal"> TOTAL: 2999.85 €</span>
                       <div class="cpago">
                       <a class="buttonenlace " href="formadepago.html">
                       <span> 💳Continua con el Pago</span></a></div>
                       
                 </div>
       
-              </div>
-            </div>
-      </div>
+              
+            
+      
     </section>
       <section class="containerbajo wrap">
         <div class="pagoseguro">
@@ -231,6 +169,7 @@
       </div>
   
       </footer>
+      <script src="../javascript/main.js"></script>
     </body>
   </html>
              

@@ -1,8 +1,11 @@
 function agregarCarrito() {
-  let carritoSumar = document.getElementById("carritoSumar");
+  
+  let carritoSumar = document.getElementById(`carritoSumar`);
   let cantidad = parseInt(carritoSumar.innerHTML);
   carritoSumar.innerHTML = `${++cantidad}`;
 }
+
+
 function iniciarSesion() {
   const request = new XMLHttpRequest();
   let email = document.getElementById("email").value;
@@ -58,15 +61,17 @@ function productos() {
               <h6>Consigue ahora los mejores productos de Computer Low Cost </h6>
       
               <div class="carrito">
-                <a onclick="agregarCarrito()" class ="buttonenlace">
+                <a onclick="agregarCarrito();productoCarrito(${response[i].id})"  class ="buttonenlace" id="agregar${response[i].id}">
                 
                 <span> 🛒 Carrito</span></a></div>
               <a onclick="ofertas()" id="ofertas" href="todoslosproductos.html?id=${response[i].id}" class="buttonenlace">Ver</a>
           </div>
           </div>
         </div>`;
+        
       }
-      userDiv.innerHTML = htmlContent;
+      userDiv.innerHTML = htmlContent; 
+      
     }
   };
   request.open("GET", "http://localhost:8000/ProductosDestacados", true);
@@ -150,4 +155,62 @@ function registroSesion() {
       Apellidos: apellidos,
     })
   );
+}
+function productoCarrito(idProducto) {
+  const request = new XMLHttpRequest();
+  
+  request.onreadystatechange = function () {
+    console.log(`Estado actual ${this.readyState}`);
+    if (this.readyState == 4 && this.status == 200) {
+      } 
+    }
+
+  request.open("GET", `http://localhost:8000/productosCarrito/${idProducto}`, true);
+  request.send();
+}
+function carrito() {
+  const request = new XMLHttpRequest();
+  let userId = new URLSearchParams(window.location.search).get("id");
+  request.onreadystatechange = function () {
+    console.log(`Estado actual ${this.readyState}`);
+    if (this.readyState == 4 && this.status == 200) {
+      let response = JSON.parse(this.responseText);
+      let userDiv = document.getElementById("carrito")
+      let htmlContent = "";
+      let suma=0;
+      console.log(response);
+      for (i = 0; i < response.length; i++) {
+        
+        suma += response[i].precio
+        htmlContent += `<table class='order-table'>
+            <td><img src='${response[i].picture}' class='full-width'></img>
+            </td>
+            <td>
+              <br>${response[i].nombre} <br> <span class='thin small'> Color: Grey</span>
+            </td>
+            <td>
+              <div class='price'>${response[i].precio}€</div>
+            </td>
+            <span class="pricetotal"> TOTAL:<b>${suma}</b>  €</span>`
+      }
+     
+      userDiv.innerHTML = htmlContent;
+      
+    }
+  };
+  request.open("GET", `http://localhost:8000/carrito/${userId}`, true);
+  request.send();
+}
+function pedido() {
+  const request = new XMLHttpRequest();
+  let userId = new URLSearchParams(window.location.search).get("id");
+  request.onreadystatechange = function () {
+    console.log(`Estado actual ${this.readyState}`);
+    if (this.readyState == 4 && this.status == 200) {
+      let response = JSON.parse(this.responseText);
+      console.log(response);   
+    }
+  };
+  request.open("GET", `http://localhost:8000/pedido/${userId}`, true);
+  request.send();
 }
